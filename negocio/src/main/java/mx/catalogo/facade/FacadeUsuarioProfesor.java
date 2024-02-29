@@ -19,8 +19,8 @@ public class FacadeUsuarioProfesor {
     public FacadeUsuarioProfesor() {
         this.delegateUsuarioProfesor = new DelegateUsuarioProfesor();
     }
-    public UsuarioProfesor login(String password, String nombreUsuario){
-        return delegateUsuarioProfesor.login(password, nombreUsuario);
+    public UsuarioProfesor login(String password, String nombreUsuario, String rol){
+        return delegateUsuarioProfesor.login(password, nombreUsuario, rol);
     }
     public void guardarUsuarioProfesor(UsuarioProfesor usuarioProfesor){
         delegateUsuarioProfesor.saveAlumno(usuarioProfesor);

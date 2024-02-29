@@ -15,7 +15,7 @@ import mx.catalogo.integracion.ServiceLocator;
  */
 public class DelegateUsuarioProfesor {
     
-    public UsuarioProfesor login(String password, String nombreUsuario){
+    public UsuarioProfesor login(String password, String nombreUsuario, String rol){
         UsuarioProfesor usuario = new UsuarioProfesor();
         List<UsuarioProfesor> usuarios = ServiceLocator.getInstanceUsuarioProfesorDAO().findAll();
         
