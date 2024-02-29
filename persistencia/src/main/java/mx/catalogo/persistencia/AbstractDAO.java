@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
-import mx.desarrollo.persistencia.InterfaceDAO;
+import mx.catalogo.persistencia.InterfaceDAO;
 import java.util.List;
 //import mx.avanti.siract.dao.InterfaceDAO;
 import org.hibernate.SQLQuery;
