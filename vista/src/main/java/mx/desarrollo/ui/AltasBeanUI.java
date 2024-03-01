@@ -15,6 +15,8 @@ import javax.faces.context.FacesContext;
 import mx.catalogo.entidad.UsuarioProfesor;
 import mx.desarrollo.helper.AltasHelper;
 import mx.catalogo.facade.FacadeUsuarioProfesor;
+import mx.catalogo.facade.FacadeUnidadaprendizaje;
+import mx.catalogo.entidad.Unidadaprendizaje;
 
 /**
  *
@@ -26,6 +28,7 @@ public class AltasBeanUI implements Serializable {
 
     private AltasHelper altasHelper;
     private UsuarioProfesor usuarioProfesor;
+    private Unidadaprendizaje unidadAprendizaje;
 
     public AltasBeanUI() {
         altasHelper = new AltasHelper();
@@ -48,5 +51,10 @@ public class AltasBeanUI implements Serializable {
     public void saveProfesor() {
         FacadeUsuarioProfesor facadeProfe = new FacadeUsuarioProfesor();
         facadeProfe.guardarUsuarioProfesor(usuarioProfesor);
+    }
+    
+    public void saveUnidadAprendizaje() {
+        FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
+        facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje);
     }
 }

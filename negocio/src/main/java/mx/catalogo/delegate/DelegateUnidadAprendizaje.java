@@ -8,18 +8,37 @@ package mx.catalogo.delegate;
 import java.util.List;
 import mx.catalogo.entidad.Unidadaprendizaje;
 import mx.catalogo.integracion.ServiceLocator;
+import mx.catalogo.DAO.UnidadaprendizajeDAO;
 
 /**
  *
  * @author EduardoCardona <>
  */
 public class DelegateUnidadAprendizaje {
+
     /**
      * Metodo de ejemplo para guardar Usuario
-     * @param usuario de tipo usuario con id 0 para poder que se cree un id nuevo
+     *
+     * @param usuario de tipo usuario con id 0 para poder que se cree un id
+     * nuevo
      */
-    public void saveUsario(Unidadaprendizaje usuario){
+    public void saveUsario(Unidadaprendizaje usuario) {
         ServiceLocator.getInstanceUnidadAprendizajeDAO().save(usuario);
     }
-    
+
+    public boolean validarUnidadAprendizaje(Unidadaprendizaje unidad) {
+        if (unidad.getIdUnidadAprendizaje() == null || unidad.getNombreUnidad() == null || unidad.getHorasClase() == 0
+                || unidad.getHorasTaller() == 0 || unidad.getHorasLaboratorio() == 0) {
+            return false;
+        } else {
+            UnidadaprendizajeDAO unidadDAO = new UnidadaprendizajeDAO();
+            Unidadaprendizaje unidadExistente = unidadDAO.find(unidad.getIdUnidadAprendizaje());
+            if (unidadExistente != null) {
+                // La unidad académica ya está asignada
+                return false;
+            }
+        }
+        return true;
+
+    }
 }

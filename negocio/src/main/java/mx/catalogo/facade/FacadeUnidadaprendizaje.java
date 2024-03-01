@@ -14,18 +14,21 @@ import mx.catalogo.entidad.Unidadaprendizaje;
  */
 public class FacadeUnidadaprendizaje {
     
-    private final DelegateUnidadAprendizaje delegateUsuario;
+    private final DelegateUnidadAprendizaje delegateUnidadAprendizaje;
 
     public FacadeUnidadaprendizaje() {
-        this.delegateUsuario = new DelegateUnidadAprendizaje();
+        this.delegateUnidadAprendizaje = new DelegateUnidadAprendizaje();
     }
     
     /**
      * Metodo de ejemplo para guardar Usuario
      * @param usuario de tipo usuario con id 0 para poder que se cree un id nuevo
      */
-    public void saveUsario(Unidadaprendizaje usuario){
-        delegateUsuario.saveUsario(usuario);
+    
+    public void guardarUnidadAprendizaje(Unidadaprendizaje unidad){
+        if(delegateUnidadAprendizaje.validarUnidadAprendizaje(unidad)){
+            delegateUnidadAprendizaje.saveUsario(unidad);
+        }
     }
     
 }
