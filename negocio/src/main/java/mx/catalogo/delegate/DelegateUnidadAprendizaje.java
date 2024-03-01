@@ -27,24 +27,24 @@ public class DelegateUnidadAprendizaje {
     }
 
     public boolean validarUnidadAprendizaje(Unidadaprendizaje unidad) {
-    if (unidad.getIdUnidadAprendizaje() == null || unidad.getNombreUnidad() == null || unidad.getHorasClase() == 0
-            || unidad.getHorasTaller() == 0 || unidad.getHorasLaboratorio() == 0) {
-        return false;
-    } else {
-        if (unidad.getHorasClase() > 0 || unidad.getHorasTaller() > 0 || unidad.getHorasLaboratorio() > 0) {
-            // Si alguna de las horas es mayor que cero, está bien
-            UnidadaprendizajeDAO unidadDAO = new UnidadaprendizajeDAO();
-            Unidadaprendizaje unidadExistente = unidadDAO.find(unidad.getIdUnidadAprendizaje());
-            if (unidadExistente != null) {
-                // La unidad académica ya está asignada
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            // Si todas las horas son iguales a cero, está mal
+        if (unidad.getIdUnidadAprendizaje() == null || unidad.getNombreUnidad() == null) {
             return false;
-        }
+        } else {
+            if (unidad.getHorasClase() > 0 || unidad.getHorasTaller() > 0 || unidad.getHorasLaboratorio() > 0) {
+                // Si alguna de las horas es mayor que cero, está bien
+                UnidadaprendizajeDAO unidadDAO = new UnidadaprendizajeDAO();
+                Unidadaprendizaje unidadExistente = unidadDAO.find(unidad.getIdUnidadAprendizaje());
+                if (unidadExistente != null) {
+                    // La unidad académica ya está asignada
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                // Si todas las horas son iguales a cero, está mal
+                return false;
+            }
 
+        }
     }
 }
