@@ -8,6 +8,7 @@ package mx.catalogo.delegate;
 import java.util.List;
 import mx.catalogo.entidad.UsuarioProfesor;
 import mx.catalogo.integracion.ServiceLocator;
+import mx.catalogo.DAO.UsuarioProfesorDAO;
 
 /**
  *
@@ -32,6 +33,24 @@ public class DelegateUsuarioProfesor {
      */
     public void saveAlumno(UsuarioProfesor usuarioprofesor){
         ServiceLocator.getInstanceUsuarioProfesorDAO().save(usuarioprofesor);
+    }
+    
+    public boolean validarProfesor(UsuarioProfesor us){
+        
+        if(us.getIdUsuario() == null || us.getNombreUsuario() == null || us.getContrasena() == null || us.getRol() == null ||
+           us.getNombre() == null || us.getApellido() == null || us.getRfc() == null){
+            return false;
+        }
+        else{
+            UsuarioProfesorDAO usuarioDAO = new UsuarioProfesorDAO();
+            UsuarioProfesor profesor = usuarioDAO.find(us.getIdUsuario());
+            if(profesor != null){
+                // Significa que ese ID del profesor ya esta asignado
+                return false;
+            }
+        }
+        
+        return true;
     }
     
 }

@@ -14,6 +14,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import mx.catalogo.entidad.UsuarioProfesor;
 import mx.desarrollo.helper.AltasHelper;
+import mx.catalogo.facade.FacadeUsuarioProfesor;
 
 /**
  *
@@ -44,5 +45,8 @@ public class AltasBeanUI implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
     }
 
-
+    public void saveProfesor() {
+        FacadeUsuarioProfesor facadeProfe = new FacadeUsuarioProfesor();
+        facadeProfe.guardarUsuarioProfesor(usuarioProfesor);
+    }
 }

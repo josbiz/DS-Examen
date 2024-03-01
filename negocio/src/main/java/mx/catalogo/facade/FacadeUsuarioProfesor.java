@@ -23,7 +23,9 @@ public class FacadeUsuarioProfesor {
         return delegateUsuarioProfesor.login(password, nombreUsuario, rol);
     }
     public void guardarUsuarioProfesor(UsuarioProfesor usuarioProfesor){
-        delegateUsuarioProfesor.saveAlumno(usuarioProfesor);
+        if(delegateUsuarioProfesor.validarProfesor(usuarioProfesor)){
+            delegateUsuarioProfesor.saveAlumno(usuarioProfesor);
+        }
     }
     
 }

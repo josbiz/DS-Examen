@@ -7,6 +7,7 @@ package mx.desarrollo.helper;
 
 import java.io.IOException;
 import java.io.Serializable;
+import mx.catalogo.integracion.ServiceFacadeLocator;
 /**
  *
  * @author josbt
