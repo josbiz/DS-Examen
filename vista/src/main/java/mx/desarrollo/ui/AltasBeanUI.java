@@ -42,6 +42,7 @@ public class AltasBeanUI implements Serializable {
     @PostConstruct
     public void init() {
         usuarioProfesor = new UsuarioProfesor();
+        unidadAprendizaje = new Unidadaprendizaje();
     }
 
     public void redirAltaUnidad() throws IOException {
@@ -57,6 +58,23 @@ public class AltasBeanUI implements Serializable {
    public void saveUnidadAprendizaje() {
         FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
         facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje);
+    }
+   
+    /* getters y setters*/
+    public UsuarioProfesor getUsuarioProfesor() {
+        return usuarioProfesor;
+    }
+
+    public void setUsuarioProfesor(UsuarioProfesor usuarioP) {
+        this.usuarioProfesor = usuarioP;
+    }
+    
+    public Unidadaprendizaje getUnidadaprendizaje(){
+        return unidadAprendizaje;
+    }
+    
+    public void setUnidadaprendizaje(Unidadaprendizaje unidadAp){
+        this.unidadAprendizaje = unidadAp;
     }
      
 }

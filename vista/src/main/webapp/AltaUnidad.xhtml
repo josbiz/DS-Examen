@@ -16,40 +16,46 @@
             <p:growl id="messages" showDetail="true"/>   
 
             <div class="page-header">             
-                <h1>Alta de unidad académica</h1>
+                <h1>Alta de Unidad de Aprendizaje</h1>
             </div>
 
             <h:form>
 
                 <div class="section">
-                    <h2>Información de Unidad Académica</h2>
-
+                    <h2>Información de Unidad de Aprendizaje</h2>
+                    
+                    <div class="form-group">  
+                        <label>ID de la Unidad de Aprendizaje</label>
+                        <p:inputText class="form-control" 
+                                     value="#{altasUI.unidadaprendizaje.idUnidadAprendizaje}"/>
+                    </div>
+                    
                     <div class="form-group">
                         <label>Nombre de Unidad</label>
                         <p:inputText class="form-control"
                                      maxlength="100" 
-                                     value="#{unidadAcBean.nuevaUnidad.nombre}"/>
+                                     value="#{altasUI.unidadaprendizaje.nombreUnidad}"/>
                     </div>
-
+                    
                     <div class="form-group">  
                         <label>Horas Clase</label>
                         <p:inputText class="form-control" 
-                                     value="#{unidadAcBean.nuevaUnidad.codigo}"/>
+                                     value="#{altasUI.unidadaprendizaje.horasClase}"/>
                     </div>
 
                     <div class="form-group">
                         <label>Horas Taller</label>
                         <p:inputText class="form-control" 
-                                     value="#{unidadAcBean.nuevaUnidad.anioCreacion}"/> 
+                                     value="#{altasUI.unidadaprendizaje.horasTaller}"/> 
                     </div>
                     <div class="form-group">
                         <label>Horas Laboratorio</label>
                         <p:inputText class="form-control" 
-                                     value="#{unidadAcBean.nuevaUnidad.anioCreacion}"/> 
+                                     value="#{altasUI.unidadaprendizaje.horasLaboratorio}"/> 
                     </div>
 
                     <div>
-                        <p:commandButton value="Crear" actionListener="#{unidadAcBean.crearUnidad}" 
+                        <p:commandButton value="Crear" actionListener="#{altasUI.saveUnidadAprendizaje()}" 
                                          update="mensajes"/>
                     </div>  
 
