@@ -12,6 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import mx.catalogo.DAO.UnidadaprendizajeDAO;
 import mx.catalogo.entidad.UsuarioProfesor;
 import mx.desarrollo.helper.AltasHelper;
 import mx.catalogo.facade.FacadeUsuarioProfesor;
@@ -53,8 +54,9 @@ public class AltasBeanUI implements Serializable {
         facadeProfe.guardarUsuarioProfesor(usuarioProfesor);
     }
     
-    public void saveUnidadAprendizaje() {
+   public void saveUnidadAprendizaje() {
         FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
         facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje);
     }
+     
 }

@@ -24,26 +24,30 @@
                 <div>
                     <p:commandButton value="Agregar unidad académica" actionListener="#{altasUI.redirAltaUnidad()}" update="messages" class="btn btn-success"/>
                 </div>
-                <p:dataTable var="profesor" value="#{profesoresBean.profesores}">
+                <p:dataTable var="unidades" value="#{consultasBeanUI.listaUnidades}">
 
                     <f:facet name="header">
                         Unidades académicas
                     </f:facet>
 
+                     <p:column headerText="ID unidad de aprendizaje">
+                         <h:outputText value="#{unidades.idUnidadAprendizaje}" />
+                    </p:column>
+                    
                     <p:column headerText="Nombre">
-                        <h:outputText value="#{profesor.nombreUsuario}" />
+                        <h:outputText value="#{unidades.nombreUnidad}" />
                     </p:column>
 
                     <p:column headerText="Horas de clase">
-                        <h:outputText value="#{profesor.contrasena}" />
+                        <h:outputText value="#{unidades.horasClase}" />
                     </p:column>
 
                     <p:column headerText="Horas de taller">
-                        <h:outputText value="#{profesor.rol}" />  
+                        <h:outputText value="#{unidades.horasTaller}" />  
                     </p:column>
 
                     <p:column headerText="Horas de laboratorio">
-                         <h:outputText value="#{profesor.nombre}" />
+                        <h:outputText value="#{unidades.horasLaboratorio}" />
                     </p:column>
 
 
