@@ -16,16 +16,16 @@ import mx.catalogo.DAO.UnidadaprendizajeDAO;
  */
 public class ServiceLocator {
     
-    private static UsuarioUnidadDAO usuarioProfesorDAO;
+    private static UsuarioProfesorDAO usuarioProfesorDAO;
     private static UnidadaprendizajeDAO unidadAprendizajeDAO;
     private static UsuarioUnidadDAO usuarioUnidadDAO;
     
     /**
      * se crea la instancia para usuarioProfesor DAO si esta no existe
      */
-    public static UsuarioUnidadDAO getInstanceUsuarioProfesorDAO(){
+    public static UsuarioProfesorDAO getInstanceUsuarioProfesorDAO(){
         if(usuarioProfesorDAO == null){
-            usuarioProfesorDAO = new UsuarioUnidadDAO();
+            usuarioProfesorDAO = new UsuarioProfesorDAO();
             return usuarioProfesorDAO;
         } else{
             return usuarioProfesorDAO;
