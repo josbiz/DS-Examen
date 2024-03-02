@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import mx.catalogo.DAO.UnidadaprendizajeDAO;
+import mx.catalogo.DAO.UsuarioProfesorDAO;
 import mx.catalogo.entidad.Unidadaprendizaje;
 import mx.catalogo.entidad.UsuarioProfesor;
 import mx.desarrollo.helper.LoginHelper;
@@ -29,6 +30,9 @@ public class consultasBeanUI implements Serializable {
 
     private Unidadaprendizaje unidadaprendizaje;
     List<Unidadaprendizaje> listaUnidades = new ArrayList();
+    
+    private UsuarioProfesor usuarioprofesor;
+    List<UsuarioProfesor> listaProfes = new ArrayList();
 
     public consultasBeanUI() {     
     }
@@ -40,20 +44,24 @@ public class consultasBeanUI implements Serializable {
     @PostConstruct
     public void init() {
         unidadaprendizaje = new Unidadaprendizaje();
+        usuarioprofesor = new UsuarioProfesor();
         consultas();
     }
 
     public void consultas(){
-        
         UnidadaprendizajeDAO unidadDao = new UnidadaprendizajeDAO();
         listaUnidades = unidadDao.findAll();
+        UsuarioProfesorDAO profeDao = new UsuarioProfesorDAO();
+        listaProfes = profeDao.findAll();
     }
-    
     
     public List<Unidadaprendizaje> getListaUnidades() {
         return listaUnidades;
     }
-
+    
+    public List<UsuarioProfesor> getListaProfesores(){
+        return listaProfes;
+    }
     
     /* getters y setters*/
     public Unidadaprendizaje getUnidadaprendizaje() {
@@ -62,6 +70,14 @@ public class consultasBeanUI implements Serializable {
 
     public void setUnidadaprendizaje(Unidadaprendizaje unidad) {
         this.unidadaprendizaje = unidad;
+    }
+    
+    public UsuarioProfesor getUsuarioProfesor() {
+        return usuarioprofesor;
+    }
+
+    public void setUsuarioProfesor(UsuarioProfesor usuarioP) {
+        this.usuarioprofesor = usuarioP;
     }
 
 }

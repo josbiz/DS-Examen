@@ -27,7 +27,7 @@ public class DelegateUnidadAprendizaje {
     }
 
     public boolean validarUnidadAprendizaje(Unidadaprendizaje unidad) {
-        if (unidad.getIdUnidadAprendizaje() == null || unidad.getNombreUnidad() == null) {
+        if (unidad.getIdUnidadAprendizaje() == null || unidad.getNombreUnidad().equals("")) {
             return false;
         } else {
             if (unidad.getHorasClase() > 0 || unidad.getHorasTaller() > 0 || unidad.getHorasLaboratorio() > 0) {

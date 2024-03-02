@@ -1,16 +1,87 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>Alta de Profesores</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+
+            <p:growl id="messages" showDetail="true"/>   
+
+            <div class="page-header">             
+                <h1>Catálogo de Profesores</h1>
+            </div>
+
+            <h:form>
+
+                <div class="section">
+                    <h2>Información de los profesores</h2>
+                    
+                    <div class="form-group">  
+                        <label>ID del profesor</label>
+                        <p:inputText class="form-control" 
+                                     value="#{altasUI.usuarioProfesor.idUsuario}"/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <p:inputText class="form-control"
+                                     maxlength="50" 
+                                     value="#{altasUI.usuarioProfesor.nombreUsuario}"/>
+                    </div>
+                    
+                    <div class="form-group">  
+                        <label>Contraseña</label>
+                        <p:inputText class="form-control" 
+                                     maxlength="50" 
+                                     value="#{altasUI.usuarioProfesor.contrasena}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rol (profesor | administrador)</label>
+                        <p:inputText class="form-control" 
+                                     value="#{altasUI.usuarioProfesor.rol}"/> 
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <p:inputText class="form-control" 
+                                     maxlength="50" 
+                                     value="#{altasUI.usuarioProfesor.nombre}"/> 
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <p:inputText class="form-control" 
+                                     maxlength="50" 
+                                     value="#{altasUI.usuarioProfesor.apellido}"/> 
+                    </div>
+                    <div class="form-group">
+                        <label>RFC</label>
+                        <p:inputText class="form-control" 
+                                     maxlength="15" 
+                                     value="#{altasUI.usuarioProfesor.rfc}"/> 
+                    </div>
+
+                    <div>
+                        <p:commandButton value="Dar de alta profesor" actionListener="#{altasUI.saveProfesor()}" update="mensajes"/> 
+                    </div>  
+                    
+                    <p:messages id="mensajes" closable="true"/>
+                    
+                </div>
+
+            </h:form>
+
+        </div>
+
+    </h:body>
+    <style>
+    </style>
 </html>
+

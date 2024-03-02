@@ -22,9 +22,13 @@ public class FacadeUsuarioProfesor {
     public UsuarioProfesor login(String password, String nombreUsuario, String rol){
         return delegateUsuarioProfesor.login(password, nombreUsuario, rol);
     }
-    public void guardarUsuarioProfesor(UsuarioProfesor usuarioProfesor){
+    public Boolean guardarUsuarioProfesor(UsuarioProfesor usuarioProfesor){
         if(delegateUsuarioProfesor.validarProfesor(usuarioProfesor)){
             delegateUsuarioProfesor.saveAlumno(usuarioProfesor);
+            return true;
+        }
+        else{
+            return false;
         }
     }
     

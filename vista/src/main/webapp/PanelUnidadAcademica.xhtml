@@ -21,9 +21,7 @@
             </div>
 
             <h:form>
-                <div>
-                    <p:commandButton value="Agregar unidad académica" actionListener="#{altasUI.redirAltaUnidad()}" update="messages" class="btn btn-success"/>
-                </div>
+                
                 <p:dataTable var="unidades" value="#{consultasBeanUI.listaUnidades}">
 
                     <f:facet name="header">

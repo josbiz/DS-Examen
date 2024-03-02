@@ -37,16 +37,21 @@ public class DelegateUsuarioProfesor {
     
     public boolean validarProfesor(UsuarioProfesor us){
         
-        if(us.getIdUsuario() == null || us.getNombreUsuario() == null || us.getContrasena() == null || us.getRol() == null ||
-           us.getNombre() == null || us.getApellido() == null || us.getRfc() == null){
+        if(us.getIdUsuario() == null || us.getNombreUsuario().equals("") || us.getContrasena().equals("") || us.getRol().equals("") ||
+           us.getNombre().equals("") || us.getApellido().equals("") || us.getRfc().equals("")){
             return false;
         }
         else{
-            UsuarioProfesorDAO usuarioDAO = new UsuarioProfesorDAO();
-            UsuarioProfesor profesor = usuarioDAO.find(us.getIdUsuario());
-            if(profesor != null){
-                // Significa que ese ID del profesor ya esta asignado
+            if(us.getRfc().length() < 13){ // Si el RFC es menor a 15 caracteres, no se puede hacer el registro
                 return false;
+            }
+            else{
+                UsuarioProfesorDAO usuarioDAO = new UsuarioProfesorDAO();
+                UsuarioProfesor profesor = usuarioDAO.find(us.getIdUsuario());
+                if(profesor != null){
+                    // Significa que ese ID del profesor ya esta asignado
+                    return false;
+                }
             }
         }
         

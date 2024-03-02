@@ -25,9 +25,13 @@ public class FacadeUnidadaprendizaje {
      * @param usuario de tipo usuario con id 0 para poder que se cree un id nuevo
      */
     
-    public void guardarUnidadAprendizaje(Unidadaprendizaje unidad){
+    public Boolean guardarUnidadAprendizaje(Unidadaprendizaje unidad){
         if(delegateUnidadAprendizaje.validarUnidadAprendizaje(unidad)){
             delegateUnidadAprendizaje.saveUsario(unidad);
+            return true;
+        }
+        else{
+            return false;
         }
     }
     

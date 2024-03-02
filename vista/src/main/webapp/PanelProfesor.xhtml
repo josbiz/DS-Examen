@@ -9,7 +9,7 @@
     <h:head>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="./resources/PanelPrincipal.css" rel="stylesheet" type="text/css"/>
-        <title>Profesor</title>
+        <title>Profesores</title>
     </h:head>
     <h:body>
         <div class="container">
@@ -22,13 +22,19 @@
 
             <h:form>
                 <div>
-                    <p:commandButton value="Agregar profesor" actionListener="#{loginUI.login()}" update="messages" class="btn btn-success"/>
+                    <p:commandButton value="Agregar unidad académica" actionListener="#{altasUI.redirAltaUnidad()}" update="messages" class="btn btn-success"/>
+                    <p:commandButton value="Agregar profesor" actionListener="#{altasUI.redirAltaProfesor()}" update="messages" class="btn btn-success"/>
                 </div>
-                <p:dataTable var="profesor" value="#{profesoresBean.profesores}">
+                
+                <p:dataTable var="profesor" value="#{consultasBeanUI.listaProfesores}">
 
                     <f:facet name="header">
-                        Profesores
+                        Lista de profesores
                     </f:facet>
+                    
+                    <p:column headerText="ID del profesor">
+                        <h:outputText value="#{profesor.idUsuario}" />
+                    </p:column>
 
                     <p:column headerText="Nombre de Usuario">
                         <h:outputText value="#{profesor.nombreUsuario}" />

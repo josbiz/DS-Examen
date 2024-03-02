@@ -49,15 +49,39 @@ public class AltasBeanUI implements Serializable {
         String appURL = "/AltaUnidad.xhtml";
         FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
     }
+    
+    public void redirAltaProfesor() throws IOException {
+        String appURL = "/AltaProfesor.xhtml";
+        FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
+    }
 
     public void saveProfesor() {
-        FacadeUsuarioProfesor facadeProfe = new FacadeUsuarioProfesor();
-        facadeProfe.guardarUsuarioProfesor(usuarioProfesor);
+        try {
+            FacadeUsuarioProfesor facadeProfe = new FacadeUsuarioProfesor();
+            if(facadeProfe.guardarUsuarioProfesor(usuarioProfesor)){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Profesor registrado exitosamente", "Se ha registrado el profesor"));
+            }
+            else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar el profesor", "Verifique que los datos esten completos"));
+            }
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al guardar unidad", "")); 
+        }
     }
     
    public void saveUnidadAprendizaje() {
-        FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
-        facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje);
+       
+       try{
+           FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
+        if(facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje)){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unidad registrada exitosamente", "Se ha registrado la UA"));
+        }
+        else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar la unidad", "Verifique que los datos esten completos"));
+        }
+       }catch(Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al guardar unidad", "")); 
+       }
     }
    
     /* getters y setters*/
