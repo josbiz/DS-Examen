@@ -44,11 +44,21 @@
                                      value="#{altasUI.usuarioProfesor.contrasena}"/>
                     </div>
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label>Rol (profesor | administrador)</label>
                         <p:inputText class="form-control" 
                                      value="#{altasUI.usuarioProfesor.rol}"/> 
+                    </div-->
+                    
+                    <div class="form-group">
+                        <label>Rol</label>
+                        <p:selectOneMenu class="form-control" value="#{altasUI.usuarioProfesor.rol}">
+                            <f:selectItem itemLabel="Selecciona un rol" itemValue="" />
+                            <f:selectItem itemLabel="Profesor" itemValue="profesor" />
+                            <f:selectItem itemLabel="Administrador" itemValue="administrador" />
+                        </p:selectOneMenu>
                     </div>
+                    
                     <div class="form-group">
                         <label>Nombre</label>
                         <p:inputText class="form-control" 
@@ -64,7 +74,7 @@
                     <div class="form-group">
                         <label>RFC</label>
                         <p:inputText class="form-control" 
-                                     maxlength="15" 
+                                     maxlength="13" 
                                      value="#{altasUI.usuarioProfesor.rfc}"/> 
                     </div>
 

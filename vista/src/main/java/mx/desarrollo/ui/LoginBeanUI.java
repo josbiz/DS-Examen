@@ -50,7 +50,7 @@ public class LoginBeanUI implements Serializable {
             // se muestre correctamente en la pagina de informacion
             usuarioProfesor = usP;
             if (usuarioProfesor.getRol().equals("profesor")) {
-                appURL = "/PanelUnidadAcademica.xhtml";
+                appURL = "/indexProfesor.xhtml";
             } else if (usuarioProfesor.getRol().equals("administrador")) {
                 // appURL = "/PanelProfesor.xhtml";
                 appURL = "/indexAdmin.xhtml";

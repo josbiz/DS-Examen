@@ -31,5 +31,24 @@ public class FacadeUsuarioProfesor {
             return false;
         }
     }
+    public boolean eliminarUsuarioProfesor(Integer idUsuarioProfesor) {
+        try {
+            // Verificar si el profesor existe antes de intentar eliminar
+            UsuarioProfesor profesorExistente = delegateUsuarioProfesor.findById(idUsuarioProfesor);
+            
+            if (profesorExistente != null) {
+                // El profesor existe, intentar eliminar
+                delegateUsuarioProfesor.deleteProfesor(profesorExistente);
+                return true; // Indicar que se eliminó correctamente
+            } else {
+                // El profesor no existe
+                return false; // Indicar que no se pudo eliminar
+            }
+        } catch (Exception e) {
+            // Manejar excepciones, loggear, etc.
+            return false; // Indicar que no se pudo eliminar debido a una excepción
+        }
+    }
+
     
 }

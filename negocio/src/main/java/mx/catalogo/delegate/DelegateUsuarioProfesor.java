@@ -42,20 +42,28 @@ public class DelegateUsuarioProfesor {
             return false;
         }
         else{
-            if(us.getRfc().length() < 13){ // Si el RFC es menor a 15 caracteres, no se puede hacer el registro
+            if(us.getRfc().length() < 13){ // Si el RFC es menor a 13 caracteres, no se puede hacer el registro
                 return false;
             }
             else{
                 UsuarioProfesorDAO usuarioDAO = new UsuarioProfesorDAO();
                 UsuarioProfesor profesor = usuarioDAO.find(us.getIdUsuario());
                 if(profesor != null){
-                    // Significa que ese ID del profesor ya esta asignado
+                    // Significa que un profesor un ese ID ya esta registrado
                     return false;
                 }
             }
         }
-        
         return true;
+    }
+    
+    public void deleteProfesor(UsuarioProfesor usuarioprofesor){
+        ServiceLocator.getInstanceUsuarioProfesorDAO().delete(usuarioprofesor);
+    }
+    
+    public UsuarioProfesor findById(Integer idUsuarioProfesor) {
+        UsuarioProfesorDAO usuarioProfesorDAO = new UsuarioProfesorDAO();
+        return usuarioProfesorDAO.find(idUsuarioProfesor);
     }
     
 }
