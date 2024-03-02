@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,6 +36,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Unidadaprendizaje.findByHorasTaller", query = "SELECT u FROM Unidadaprendizaje u WHERE u.horasTaller = :horasTaller")
     , @NamedQuery(name = "Unidadaprendizaje.findByHorasLaboratorio", query = "SELECT u FROM Unidadaprendizaje u WHERE u.horasLaboratorio = :horasLaboratorio")})
 public class Unidadaprendizaje implements Serializable {
+
+    @OneToMany(mappedBy = "idUnidadAprendizaje")
+    private List<UsuarioUnidad> usuarioUnidadList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -144,6 +148,15 @@ public class Unidadaprendizaje implements Serializable {
     @Override
     public String toString() {
         return "mx.catalogo.entidad.Unidadaprendizaje[ idUnidadAprendizaje=" + idUnidadAprendizaje + " ]";
+    }
+
+    @XmlTransient
+    public List<UsuarioUnidad> getUsuarioUnidadList() {
+        return usuarioUnidadList;
+    }
+
+    public void setUsuarioUnidadList(List<UsuarioUnidad> usuarioUnidadList) {
+        this.usuarioUnidadList = usuarioUnidadList;
     }
     
 }

@@ -18,6 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -39,6 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "UsuarioProfesor.findByApellido", query = "SELECT u FROM UsuarioProfesor u WHERE u.apellido = :apellido")
     , @NamedQuery(name = "UsuarioProfesor.findByRfc", query = "SELECT u FROM UsuarioProfesor u WHERE u.rfc = :rfc")})
 public class UsuarioProfesor implements Serializable {
+
+    @OneToMany(mappedBy = "idUsuario")
+    private List<UsuarioUnidad> usuarioUnidadList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -175,6 +179,15 @@ public class UsuarioProfesor implements Serializable {
     @Override
     public String toString() {
         return "mx.catalogo.entidad.UsuarioProfesor[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public List<UsuarioUnidad> getUsuarioUnidadList() {
+        return usuarioUnidadList;
+    }
+
+    public void setUsuarioUnidadList(List<UsuarioUnidad> usuarioUnidadList) {
+        this.usuarioUnidadList = usuarioUnidadList;
     }
     
 }

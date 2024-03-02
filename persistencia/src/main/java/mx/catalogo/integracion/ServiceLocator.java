@@ -6,6 +6,7 @@
 package mx.catalogo.integracion;
 
 import mx.catalogo.DAO.UsuarioProfesorDAO;
+import mx.catalogo.DAO.UsuarioUnidadDAO;
 import mx.catalogo.DAO.UnidadaprendizajeDAO;
 
 
@@ -15,15 +16,16 @@ import mx.catalogo.DAO.UnidadaprendizajeDAO;
  */
 public class ServiceLocator {
     
-    private static UsuarioProfesorDAO usuarioProfesorDAO;
+    private static UsuarioUnidadDAO usuarioProfesorDAO;
     private static UnidadaprendizajeDAO unidadAprendizajeDAO;
+    private static UsuarioUnidadDAO usuarioUnidadDAO;
     
     /**
      * se crea la instancia para usuarioProfesor DAO si esta no existe
      */
-    public static UsuarioProfesorDAO getInstanceUsuarioProfesorDAO(){
+    public static UsuarioUnidadDAO getInstanceUsuarioProfesorDAO(){
         if(usuarioProfesorDAO == null){
-            usuarioProfesorDAO = new UsuarioProfesorDAO();
+            usuarioProfesorDAO = new UsuarioUnidadDAO();
             return usuarioProfesorDAO;
         } else{
             return usuarioProfesorDAO;
@@ -41,5 +43,18 @@ public class ServiceLocator {
             return unidadAprendizajeDAO;
         }
     }
+    
+     /**
+     * se crea la instancia para usuarioUnidad DAO si esta no existe
+     */
+    public static UsuarioUnidadDAO getInstanceUsuarioUnidadDAO(){
+        if(usuarioUnidadDAO == null){
+            usuarioUnidadDAO = new UsuarioUnidadDAO();
+            return usuarioUnidadDAO;
+        } else{
+            return usuarioUnidadDAO;
+        }
+    }
+    
 }
 

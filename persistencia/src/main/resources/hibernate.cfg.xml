@@ -61,5 +61,6 @@ Contributor(s):
     <property name="c3p0.timeout">100</property>
     <mapping class="mx.catalogo.entidad.Unidadaprendizaje"/>
     <mapping class="mx.catalogo.entidad.UsuarioProfesor"/>
+    <mapping class="mx.catalogo.entidad.UsuarioUnidad"/>
   </session-factory>
 </hibernate-configuration>
