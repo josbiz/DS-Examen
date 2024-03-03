@@ -42,5 +42,5 @@ public class FacadeUsuarioUnidad {
             // Manejar excepciones, loggear, etc.
             return false; // Indicar que no se pudo eliminar debido a una excepción
         }
-
+    }
 }
