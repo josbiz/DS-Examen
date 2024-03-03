@@ -59,20 +59,20 @@ public class UsuarioUnidad implements Serializable {
         this.idRegistro = idRegistro;
     }
 
-    public UsuarioProfesor getIdUsuario() {
-        return idUsuario;
+    public Integer getIdUsuario() {
+        return idUsuario.getIdUsuario();
     }
 
     public void setIdUsuario(UsuarioProfesor idUsuario) {
-        this.idUsuario = idUsuario;
+        this.idUsuario.setIdUsuario(idUsuario.getIdUsuario());
     }
 
-    public Unidadaprendizaje getIdUnidadAprendizaje() {
-        return idUnidadAprendizaje;
+    public Integer getIdUnidadAprendizaje() {
+        return idUnidadAprendizaje.getIdUnidadAprendizaje();
     }
 
     public void setIdUnidadAprendizaje(Unidadaprendizaje idUnidadAprendizaje) {
-        this.idUnidadAprendizaje = idUnidadAprendizaje;
+        this.idUnidadAprendizaje.setIdUnidadAprendizaje( idUnidadAprendizaje.getIdUnidadAprendizaje());
     }
 
     @Override
