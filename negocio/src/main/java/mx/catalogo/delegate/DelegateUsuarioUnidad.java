@@ -32,5 +32,10 @@ public class DelegateUsuarioUnidad {
         // Si todas las validaciones pasan, retornar true
         return true;
     }
+    
+    public UsuarioUnidad findById(Integer idUsuarioUnidad) {
+        UsuarioUnidadDAO usuarioUnidadDAO = new UsuarioUnidadDAO();
+        return usuarioUnidadDAO.find(idUsuarioUnidad);
+    }
 
 }

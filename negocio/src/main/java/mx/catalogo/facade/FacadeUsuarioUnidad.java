@@ -21,9 +21,26 @@ public class FacadeUsuarioUnidad {
     }
 
     public Boolean guardarUsuarioUnidad(UsuarioUnidad usuarioUnidad) {
-
         delegateUsuarioUnidad.saveUsuarioUnidad(usuarioUnidad);
         return true;
     }
+    
+    public boolean eliminarUsuarioUnidad(Integer idUsuUnidad) {
+     try {
+            // Verificar si el registro existe antes de intentar eliminar
+            UsuarioUnidad usuUnidadExiste = delegateUsuarioUnidad.findById(idUsuUnidad);
+            
+            if (idUsuUnidad != null) {
+                // El profesor existe, intentar eliminar
+                delegateUsuarioUnidad.deleteUsuarioUnidad(usuUnidadExiste);
+                return true; // Indicar que se eliminó correctamente
+            } else {
+                // El profesor no existe
+                return false; // Indicar que no se pudo eliminar
+            }
+        } catch (Exception e) {
+            // Manejar excepciones, loggear, etc.
+            return false; // Indicar que no se pudo eliminar debido a una excepción
+        }
 
 }
