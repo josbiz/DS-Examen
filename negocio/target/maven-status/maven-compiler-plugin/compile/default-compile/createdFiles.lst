@@ -1,1 +1,4 @@
 mx\catalogo\facade\FacadeUsuarioProfesor.class
+mx\catalogo\facade\FacadeUnidadaprendizaje.class
+mx\catalogo\integracion\ServiceFacadeLocator.class
+test\test.class

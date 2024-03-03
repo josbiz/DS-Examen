@@ -7,6 +7,7 @@ package mx.catalogo.integracion;
 
 import mx.catalogo.facade.FacadeUsuarioProfesor;
 import mx.catalogo.facade.FacadeUnidadaprendizaje;
+import mx.catalogo.facade.FacadeUsuarioUnidad;
 
 /**
  *
@@ -16,6 +17,7 @@ public class ServiceFacadeLocator {
     
     private static FacadeUsuarioProfesor facadeUsuarioProfesor;
     private static FacadeUnidadaprendizaje facadeUnidadaprendizaje;
+    private static FacadeUsuarioUnidad facadeUsuarioUnidad;
     
     public static FacadeUsuarioProfesor getInstanceFacadeUsuarioProfesor() {
         if (facadeUsuarioProfesor == null) {
@@ -34,4 +36,14 @@ public class ServiceFacadeLocator {
             return facadeUnidadaprendizaje;
         }
     }
+    
+    public static FacadeUsuarioUnidad getInstanceFacadeUsuarioUnidad() {
+        if (facadeUsuarioUnidad == null) {
+            facadeUsuarioUnidad = new FacadeUsuarioUnidad();
+            return facadeUsuarioUnidad;
+        } else {
+            return facadeUsuarioUnidad;
+        }
+    }
+    
 }

@@ -1,1 +1,6 @@
+mx\catalogo\DAO\UnidadaprendizajeDAO.class
+mx\catalogo\DAO\UsuarioProfesorDAO.class
 mx\catalogo\persistencia\InterfaceDAO.class
+test\test.class
+mx\catalogo\persistencia\AbstractDAO.class
+mx\catalogo\persistencia\HibernateUtil.class

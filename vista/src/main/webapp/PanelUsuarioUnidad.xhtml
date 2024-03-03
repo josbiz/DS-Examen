@@ -22,7 +22,7 @@
 
             <h:form>
                 <div>
-                    <p:commandButton value="Asignar unidad de aprendizaje" actionListener="#{altasUI.redirAltaProfesor()}" update="messages" class="btn btn-success"/>
+                    <p:commandButton value="Asignar unidad de aprendizaje" actionListener="#{altasUI.redirUsuarioUnidad()}" update="messages" class="btn btn-success"/>
                 </div>
                 
                 <p:dataTable var="unidad" value="#{consultasBeanUI.listaUsuarioUnidades}">

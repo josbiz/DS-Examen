@@ -13,7 +13,6 @@ import mx.catalogo.persistencia.AbstractDAO;
  * @author total
  */
 public class UsuarioUnidadDAO extends AbstractDAO<Integer, UsuarioUnidad>{
-
-
+    
     
 }

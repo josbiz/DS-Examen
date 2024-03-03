@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>Profesores</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+
+            <p:growl id="messages" showDetail="true"/>   
+
+            <div class="page-header">             
+                <h1>Agregar Unidad de Aprendizaje a Profesor</h1>
+            </div>
+
+            <h:form>
+
+                <p:dataTable var="profesor" value="#{consultasBeanUI.listaProfesores}">
+                    <f:facet name="header">
+                        Lista de profesores
+                    </f:facet>
+
+                    <p:column headerText="ID del profesor">
+                        <h:outputText value="#{profesor.idUsuario}" />
+                    </p:column>
+
+                    <p:column headerText="Nombre de Usuario">
+                        <h:outputText value="#{profesor.nombreUsuario}" />
+                    </p:column>
+                </p:dataTable>
+
+
+                <p:dataTable var="unidades" value="#{consultasBeanUI.listaUnidades}">
+                    <f:facet name="header">
+                        Unidades académicas
+                    </f:facet>
+
+                    <p:column headerText="ID unidad de aprendizaje">
+                        <h:outputText value="#{unidades.idUnidadAprendizaje}" />
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{unidades.nombreUnidad}" />
+                    </p:column>
+                </p:dataTable>
+
+
+
+
+                <div class="section">
+
+                    <!--div class="form-group">
+                        <label>ID del profesor a eliminar:</label>
+                        <p:inputText class="form-control" value="#{altas.idProfesor}"/>
+                    </div-->
+
+                    <div class="form-group">
+                        <label>ID del profesor para asignar unidades de aprendizaje</label>
+                        <p:selectOneMenu class="form-control" value="#{altasUI.idProfesor}">
+                            <f:selectItems value="#{consultasBeanUI.listaProfesores}" var="profesor" itemValue="#{profesor.idUsuario}" itemLabel="#{profesor.idUsuario}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ID de la unidad de aprendizaje que desea agregar</label>
+                        <p:selectOneMenu class="form-control" value="#{altasUI.idUnidades}"> 
+                            <f:selectItems value="#{consultasBeanUI.listaUnidades}" var="unidades" itemValue="#{unidades.idUnidadAprendizaje}" itemLabel="#{unidades.idUnidadAprendizaje}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div>
+                        <p:commandButton value="Agregar Asignatura a Profesor" actionListener="#{altasUI.saveUsuarioUnidad()}" update="mensajes"/> 
+                    </div>  
+
+                    <p:messages id="mensajes" closable="true"/>
+                </div>
+            </h:form>
+
+        </div>
+
+    </h:body>
+    <style>
+    </style>
+</html>
+

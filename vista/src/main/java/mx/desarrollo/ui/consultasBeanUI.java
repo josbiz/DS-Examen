@@ -50,7 +50,7 @@ public class consultasBeanUI implements Serializable {
     public void init() {
         unidadaprendizaje = new Unidadaprendizaje();
         usuarioprofesor = new UsuarioProfesor();
-          usuariounidad = new UsuarioUnidad();
+        usuariounidad = new UsuarioUnidad();
         consultas();
     }
 
