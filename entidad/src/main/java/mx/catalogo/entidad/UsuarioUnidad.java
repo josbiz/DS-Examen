@@ -45,6 +45,8 @@ public class UsuarioUnidad implements Serializable {
     private Unidadaprendizaje idUnidadAprendizaje;
 
     public UsuarioUnidad() {
+        idUsuario = new UsuarioProfesor();
+        idUnidadAprendizaje = new Unidadaprendizaje();
     }
 
     public UsuarioUnidad(Integer idRegistro) {
@@ -63,16 +65,16 @@ public class UsuarioUnidad implements Serializable {
         return idUsuario.getIdUsuario();
     }
 
-    public void setIdUsuario(UsuarioProfesor idUsuario) {
-        this.idUsuario.setIdUsuario(idUsuario.getIdUsuario());
+    public void setIdUsuario(Integer idUsuario_) {
+        this.idUsuario.setIdUsuario(idUsuario_);
     }
 
     public Integer getIdUnidadAprendizaje() {
         return idUnidadAprendizaje.getIdUnidadAprendizaje();
     }
 
-    public void setIdUnidadAprendizaje(Unidadaprendizaje idUnidadAprendizaje) {
-        this.idUnidadAprendizaje.setIdUnidadAprendizaje( idUnidadAprendizaje.getIdUnidadAprendizaje());
+    public void setIdUnidadAprendizaje(Integer idUnidadAprendizaje_) {
+        this.idUnidadAprendizaje.setIdUnidadAprendizaje(idUnidadAprendizaje_);
     }
 
     @Override

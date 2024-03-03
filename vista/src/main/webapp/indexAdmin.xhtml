@@ -8,16 +8,21 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./resources/Index.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="./resources/UABClogo.ico" />
         <title>Panel Administrador</title>
     </h:head>
     <h:body>
         <div class="container">
             <div class="page-header text-center">
+                <div class="logo-container">
+                    <p:graphicImage url="resources/UABClogo.png" class="logo"/>
+                </div>
                 <h1>Bienvenido Administrador</h1>    
             </div>
 
             <div class="jumbotron text-center bg-gradient">
-                <p class="lead">Registra y administra los elementos educativos</p>
+                <p class="lead">Registra y administra los elementos educativos de la institución</p>
                 <hr class="border-success"></hr>
                 <div class="d-flex justify-content-between">
                     <p:button outcome="/PanelUsuarios.xhtml" value="Usuarios" class="btn btn-success btn-lg px-5"/>

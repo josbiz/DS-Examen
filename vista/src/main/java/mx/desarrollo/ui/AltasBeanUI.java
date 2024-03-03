@@ -80,7 +80,7 @@ public class AltasBeanUI implements Serializable {
     }
 
     public void saveUnidadAprendizaje() {
-
+        
         try {
             FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
             if (facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje)) {
@@ -94,9 +94,14 @@ public class AltasBeanUI implements Serializable {
     }
 
     public void saveUsuarioUnidad() {
+        UsuarioUnidad usUn = new UsuarioUnidad();     
+        usUn.setIdRegistro(0);
+        usUn.setIdUsuario(idProfesor);
+        usUn.setIdUnidadAprendizaje(idUnidades);
         try {
             FacadeUsuarioUnidad facadeUsuarioUnidad = new FacadeUsuarioUnidad();
-            if (facadeUsuarioUnidad.guardarUsuarioUnidad(usuarioUnidad)) {
+            usuarioUnidad = usUn;
+            if (facadeUsuarioUnidad.guardarUsuarioUnidad(usUn)) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unidad registrada exitosamente", "Se ha registrado la UA"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar la unidad al profesor", "Verifique que los datos no esten traslapados con otra asignatura"));
