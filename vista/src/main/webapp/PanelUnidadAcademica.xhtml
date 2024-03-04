@@ -9,7 +9,7 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="./resources/PanelPrincipal.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="./resources/UABClogo.ico" />
-        <title>Unidad Académica</title>
+        <title>Unidad de Aprendizaje</title>
     </h:head>
     <h:body>
         <div class="container">
@@ -17,17 +17,17 @@
             <p:growl id="messages" showDetail="true"/>   
 
             <div class="page-header">             
-                <h1>Control Unidades Académicas</h1>
+                <h1>Control Unidades de Aprendizaje</h1>
             </div>
 
             <h:form>
                 <div>
-                    <p:commandButton value="Agregar unidad académica" actionListener="#{altasUI.redirAltaUnidad()}" update="messages" class="btn btn-success"/>
+                    <p:commandButton value="Agregar unidad de aprendizaje" actionListener="#{altasUI.redirAltaUnidad()}" update="messages" class="btn btn-success"/>
                 </div>
                 <p:dataTable var="unidades" value="#{consultasBeanUI.listaUnidades}">
 
                     <f:facet name="header">
-                        Unidades académicas
+                        Unidades de Aprendizaje
                     </f:facet>
 
                     <p:column headerText="ID unidad de aprendizaje">

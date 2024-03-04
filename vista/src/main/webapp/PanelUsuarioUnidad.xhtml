@@ -27,11 +27,7 @@
                     <p:commandButton value="Quitar unidad de aprendizaje" actionListener="#{bajasUI.redirBajasUsuarioUnidad()}" update="messages" class="btn btn-success"/>
                 </div>
                 
-                <p:dataTable var="unidad" value="#{consultasBeanUI.listaUsuarioUnidades}">
-
-                    <f:facet name="header">
-                        Lista de usuarios
-                    </f:facet>
+                <p:dataTable var="unidad" value="#{consultasBeanUI.listaUsuarioUnidades}">     
                     
                     <p:column headerText="ID del Registro">
                         <h:outputText value="#{unidad.idRegistro}" />
