@@ -24,7 +24,7 @@
             <h:form>
                 <div>
                     <p:commandButton value="Asignar unidad de aprendizaje" actionListener="#{altasUI.redirUsuarioUnidad()}" update="messages" class="btn btn-success"/>
-                    <p:commandButton value="Quitar unidad de aprendizaje" actionListener="#{bajasUI.redirBajasUsuarioUnidad()}" update="messages" class="btn btn-success"/>
+                    <p:commandButton value="Quitar unidad de aprendizaje" actionListener="#{bajasUI.redirBajasUsuarioUnidad()}" update="messages" class="btn btn-danger"/>
                 </div>
                 
                 <p:dataTable var="unidad" value="#{consultasBeanUI.listaUsuarioUnidades}">     

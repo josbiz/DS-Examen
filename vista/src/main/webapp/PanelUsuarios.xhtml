@@ -24,7 +24,7 @@
             <h:form>
                 <div>
                     <p:commandButton value="Agregar profesor" actionListener="#{altasUI.redirAltaProfesor()}" update="messages" class="btn btn-success"/>
-                    <p:commandButton value="Eliminar profesor" actionListener="#{bajasUI.redirBajaProfesor()}" update="messages" class="btn btn-success"/>
+                    <p:commandButton value="Eliminar profesor" actionListener="#{bajasUI.redirBajaProfesor()}" update="messages" class="btn btn-danger"/>
                 </div>
 
                 <p:dataTable var="profesor" value="#{consultasBeanUI.listaProfesores}">
