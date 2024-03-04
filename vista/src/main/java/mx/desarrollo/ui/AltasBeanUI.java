@@ -7,6 +7,8 @@ package mx.desarrollo.ui;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +22,8 @@ import mx.catalogo.facade.FacadeUnidadaprendizaje;
 import mx.catalogo.entidad.Unidadaprendizaje;
 import mx.catalogo.facade.FacadeUsuarioUnidad;
 import mx.catalogo.entidad.UsuarioUnidad;
+import mx.desarrollo.ui.consultasBeanUI;
+import mx.catalogo.DAO.UsuarioUnidadDAO;
 
 /**
  *
@@ -35,6 +39,11 @@ public class AltasBeanUI implements Serializable {
     private UsuarioUnidad usuarioUnidad;
     private Integer idProfesor;
     private Integer idUnidades;
+    private consultasBeanUI consultasBean;
+    private UsuarioUnidadDAO usunDAO;
+    
+    private UsuarioUnidad usuariounidad;
+    List<UsuarioUnidad> listaUsuarioUnidad = new ArrayList();
 
     public AltasBeanUI() {
         altasHelper = new AltasHelper();
@@ -46,9 +55,12 @@ public class AltasBeanUI implements Serializable {
      */
     @PostConstruct
     public void init() {
+        usunDAO = new UsuarioUnidadDAO();
         usuarioProfesor = new UsuarioProfesor();
         unidadAprendizaje = new Unidadaprendizaje();
         usuarioUnidad = new UsuarioUnidad();
+        consultasBean = new consultasBeanUI();
+        listaUsuarioUnidad = usunDAO.findAll();
     }
 
     public void redirAltaUnidad() throws IOException {
@@ -94,17 +106,29 @@ public class AltasBeanUI implements Serializable {
     }
 
     public void saveUsuarioUnidad() {
-        UsuarioUnidad usUn = new UsuarioUnidad();     
+        UsuarioUnidad usUn = new UsuarioUnidad();  
+        Boolean flag = true;
         usUn.setIdRegistro(0);
         usUn.setIdUsuario(idProfesor);
         usUn.setIdUnidadAprendizaje(idUnidades);
         try {
-            FacadeUsuarioUnidad facadeUsuarioUnidad = new FacadeUsuarioUnidad();
-            usuarioUnidad = usUn;
-            if (facadeUsuarioUnidad.guardarUsuarioUnidad(usUn)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unidad registrada exitosamente", "Se ha registrado la UA"));
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar la unidad al profesor", "Verifique que los datos no esten traslapados con otra asignatura"));
+            for(UsuarioUnidad ud : listaUsuarioUnidad){
+                if(idProfesor.equals(ud.getIdUsuario()) && idUnidades.equals(ud.getIdUnidadAprendizaje())) {
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                FacadeUsuarioUnidad facadeUsuarioUnidad = new FacadeUsuarioUnidad();
+                usuarioUnidad = usUn;
+                if (facadeUsuarioUnidad.guardarUsuarioUnidad(usUn)) {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unidad registrada exitosamente", "Se ha registrado la UA"));
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar la unidad al profesor", "Verifique que los datos no esten traslapados con otra asignatura"));
+                }
+            }
+            else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Traslape con otra materia", "Este profesor ya tiene esa materia asginada"));
             }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al guardar unidad al profesor", ""));

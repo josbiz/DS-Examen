@@ -29,6 +29,7 @@ import mx.desarrollo.helper.LoginHelper;
 @ManagedBean(name = "consultasBeanUI")
 @SessionScoped
 public class consultasBeanUI implements Serializable {
+    UsuarioUnidadDAO usuariounidadDao = new UsuarioUnidadDAO();
 
     private Unidadaprendizaje unidadaprendizaje;
     List<Unidadaprendizaje> listaUnidades = new ArrayList();
@@ -38,6 +39,9 @@ public class consultasBeanUI implements Serializable {
     
     private UsuarioUnidad usuariounidad;
     List<UsuarioUnidad> listaUsuarioUnidad = new ArrayList();
+    List<UsuarioUnidad> listaUsuarioUnidadByID = new ArrayList();
+    
+    private String idProfesor;
 
     public consultasBeanUI() {     
     }
@@ -51,6 +55,7 @@ public class consultasBeanUI implements Serializable {
         unidadaprendizaje = new Unidadaprendizaje();
         usuarioprofesor = new UsuarioProfesor();
         usuariounidad = new UsuarioUnidad();
+        idProfesor = "";
         consultas();
     }
 
@@ -59,8 +64,14 @@ public class consultasBeanUI implements Serializable {
         listaUnidades = unidadDao.findAll();
         UsuarioProfesorDAO profeDao = new UsuarioProfesorDAO();
         listaProfes = profeDao.findAll();
-        UsuarioUnidadDAO usuariounidadDao = new UsuarioUnidadDAO();
+        ordenarPorNombre(listaProfes);
         listaUsuarioUnidad = usuariounidadDao.findAll();
+    }
+    
+    public void redirPanelUnidadesProfesor() throws IOException {
+        listaUsuarioUnidadByID = usuariounidadDao.findByOneParameter(idProfesor,"idUsuario");
+        String appURL = "/PanelUnidadesProfesor.xhtml";
+        FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
     }
     
     public List<Unidadaprendizaje> getListaUnidades() {
@@ -71,8 +82,27 @@ public class consultasBeanUI implements Serializable {
         return listaProfes;
     }
     
-     public List<UsuarioUnidad> getListaUsuarioUnidades() {
+    public static void ordenarPorNombre(List<UsuarioProfesor> lista) {
+        int n = lista.size();
+        UsuarioProfesor temp;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (lista.get(j).getNombre().compareTo(lista.get(j + 1).getNombre()) > 0) {
+                    // Intercambiar elementos si están en el orden incorrecto
+                    temp = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1, temp);
+                }
+            }
+        }
+    }
+    
+    public List<UsuarioUnidad> getListaUsuarioUnidades() {
         return listaUsuarioUnidad;
+    }
+    
+    public List<UsuarioUnidad> getListaUsuarioUnidadesbByID() {
+        return listaUsuarioUnidadByID;
     }
     /* getters y setters*/
     public Unidadaprendizaje getUnidadaprendizaje() {
@@ -89,6 +119,14 @@ public class consultasBeanUI implements Serializable {
 
     public void setUsuarioProfesor(UsuarioProfesor usuarioP) {
         this.usuarioprofesor = usuarioP;
+    }
+    
+    public String getIdProfesor() {
+        return idProfesor;
+    }
+
+    public void setIdProfesor(String idProfesor) {
+        this.idProfesor = idProfesor;
     }
 
 }

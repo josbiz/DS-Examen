@@ -19,6 +19,8 @@ import mx.catalogo.facade.FacadeUsuarioProfesor;
 import mx.catalogo.facade.FacadeUsuarioUnidad;
 import mx.desarrollo.helper.AltasHelper;
 import mx.desarrollo.helper.BajasHelper;
+import mx.desarrollo.ui.consultasBeanUI;
+import mx.catalogo.entidad.UsuarioUnidad;
 
 /**
  *
@@ -34,6 +36,7 @@ public class BajasBeanUI implements Serializable {
     private UsuarioProfesor usuarioProfesor;
     private Unidadaprendizaje unidadAprendizaje;
     private UsuarioUnidad usuarioUnidad;
+    private consultasBeanUI consultasBean;
 
     public BajasBeanUI() {
         bajasHelper = new BajasHelper();
@@ -43,6 +46,7 @@ public class BajasBeanUI implements Serializable {
         usuarioProfesor = new UsuarioProfesor();
         unidadAprendizaje = new Unidadaprendizaje();
         usuarioUnidad = new UsuarioUnidad();
+        consultasBean = new consultasBeanUI();
     }
 
     public void redirBajaProfesor() throws IOException {
@@ -74,13 +78,19 @@ public class BajasBeanUI implements Serializable {
     public void eliminarProfesor() {
         try {
             FacadeUsuarioProfesor facadeProfe = new FacadeUsuarioProfesor();
+            FacadeUsuarioUnidad facadeRegis = new FacadeUsuarioUnidad();
             if (facadeProfe.eliminarUsuarioProfesor(idProfesor)) {
+                for(UsuarioUnidad ud : consultasBean.listaUsuarioUnidad){
+                    if(idProfesor.equals(ud.getIdUsuario())){
+                        facadeRegis.eliminarUsuarioUnidad(ud.getIdRegistro());
+                    }
+                }
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Profesor eliminado exitosamente", "Se ha eliminado el profesor"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo eliminar el profesor", "Verifique que los datos sean correctos"));
             }
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al eliminar profesor", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Profesor eliminado exitosamente y tambien sus asignaciones", "Se ha eliminado el profesor"));
         }
     }
 

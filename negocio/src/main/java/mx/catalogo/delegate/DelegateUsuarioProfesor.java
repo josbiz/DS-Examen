@@ -37,7 +37,7 @@ public class DelegateUsuarioProfesor {
     
     public boolean validarProfesor(UsuarioProfesor us){
         
-        if(us.getIdUsuario() == null || us.getNombreUsuario().equals("") || us.getContrasena().equals("") || us.getRol().equals("") ||
+        if(us.getNombreUsuario().equals("") || us.getContrasena().equals("") || us.getRol().equals("") ||
            us.getNombre().equals("") || us.getApellido().equals("") || us.getRfc().equals("")){
             return false;
         }
