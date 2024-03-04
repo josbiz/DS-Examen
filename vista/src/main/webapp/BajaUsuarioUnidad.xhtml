@@ -57,7 +57,8 @@
                     </div>
                     
                     <div>
-                        <p:commandButton value="Aceptar Des-Asignación" actionListener="#{bajasUI.eliminarRegistro()}" update="mensajes"/> 
+                        <p:commandButton value="Aceptar Des-Asignación" actionListener="#{bajasUI.eliminarRegistro()}" styleClass="btn btn-default" update="mensajes"/> 
+                        <p:button outcome="/PanelUsuarioUnidad.xhtml" value="Regresar" styleClass="btn btn-default"/>
                     </div>  
                     
                     <p:messages id="mensajes" closable="true"/>

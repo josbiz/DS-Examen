@@ -30,6 +30,7 @@ import mx.desarrollo.helper.LoginHelper;
 @SessionScoped
 public class consultasBeanUI implements Serializable {
     UsuarioUnidadDAO usuariounidadDao = new UsuarioUnidadDAO();
+    UnidadaprendizajeDAO unidadaprendizajeDao = new UnidadaprendizajeDAO();
 
     private Unidadaprendizaje unidadaprendizaje;
     List<Unidadaprendizaje> listaUnidades = new ArrayList();
@@ -40,8 +41,9 @@ public class consultasBeanUI implements Serializable {
     private UsuarioUnidad usuariounidad;
     List<UsuarioUnidad> listaUsuarioUnidad = new ArrayList();
     List<UsuarioUnidad> listaUsuarioUnidadByID = new ArrayList();
-    
-    private String idProfesor;
+    List<Unidadaprendizaje> listaNombresUnidades = new ArrayList();
+
+    private Integer idProfesor;
 
     public consultasBeanUI() {     
     }
@@ -55,7 +57,7 @@ public class consultasBeanUI implements Serializable {
         unidadaprendizaje = new Unidadaprendizaje();
         usuarioprofesor = new UsuarioProfesor();
         usuariounidad = new UsuarioUnidad();
-        idProfesor = "";
+        idProfesor = 0;
         consultas();
     }
 
@@ -68,8 +70,12 @@ public class consultasBeanUI implements Serializable {
         listaUsuarioUnidad = usuariounidadDao.findAll();
     }
     
-    public void redirPanelUnidadesProfesor() throws IOException {
-        listaUsuarioUnidadByID = usuariounidadDao.findByOneParameter(idProfesor,"idUsuario");
+    public void redirPanelUnidadesProfesor(Integer idProfesor) throws IOException {
+        listaUsuarioUnidadByID = usuariounidadDao.findByOneParameter(idProfesor.toString(),"idUsuario");
+        listaNombresUnidades.clear();
+        for (UsuarioUnidad usuarioUnidades : listaUsuarioUnidadByID) {
+            listaNombresUnidades.addAll(unidadaprendizajeDao.findByOneParameter(usuarioUnidades.getIdUnidadAprendizaje().toString(), "idUnidadAprendizaje"));
+        }
         String appURL = "/PanelUnidadesProfesor.xhtml";
         FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
     }
@@ -122,11 +128,18 @@ public class consultasBeanUI implements Serializable {
     }
     
     public String getIdProfesor() {
-        return idProfesor;
+        return idProfesor.toString();
     }
 
-    public void setIdProfesor(String idProfesor) {
+    public void setIdProfesor(Integer idProfesor) {
         this.idProfesor = idProfesor;
     }
 
+    public List<Unidadaprendizaje> getListaNombresUnidades() {
+        return listaNombresUnidades;
+    }
+
+    public void setListaNombresUnidades(List<Unidadaprendizaje> listaNombresUnidades) {
+        this.listaNombresUnidades = listaNombresUnidades;
+    }
 }

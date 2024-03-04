@@ -71,7 +71,8 @@
                     </div>
 
                     <div>
-                        <p:commandButton value="Agregar Asignatura a Profesor" actionListener="#{altasUI.saveUsuarioUnidad()}" update="mensajes"/> 
+                        <p:commandButton value="Agregar Asignatura a Profesor" actionListener="#{altasUI.saveUsuarioUnidad()}" styleClass="btn btn-default" update="mensajes"/> 
+                        <p:button outcome="/PanelUsuarioUnidad.xhtml" value="Regresar" styleClass="btn btn-default"/>
                     </div>  
 
                     <p:messages id="mensajes" closable="true"/>

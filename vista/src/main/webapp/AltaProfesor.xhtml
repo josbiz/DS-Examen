@@ -80,7 +80,8 @@
                     </div>
 
                     <div>
-                        <p:commandButton value="Dar de alta profesor" actionListener="#{altasUI.saveProfesor()}" update="mensajes"/> 
+                        <p:commandButton value="Dar de alta profesor" actionListener="#{altasUI.saveProfesor()}" styleClass="btn btn-default" update="mensajes"/> 
+                        <p:button outcome="/PanelUsuarios.xhtml" value="Regresar" styleClass="btn btn-default"/>
                     </div>  
                     
                     <p:messages id="mensajes" closable="true"/>

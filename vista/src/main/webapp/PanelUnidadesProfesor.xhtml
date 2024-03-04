@@ -23,22 +23,10 @@
 
             <h:form>
                 
-                <p:dataTable var="unidadByID" value="#{consultasBeanUI.listaUsuarioUnidadesbByID}">
-
-                    <f:facet name="header">
-                        Lista de usuarios
-                    </f:facet>
+                <p:dataTable var="unidadByID" value="#{consultasBeanUI.listaNombresUnidades}">
                     
-                    <p:column headerText="ID del Registro">
-                        <h:outputText value="#{unidadByID.idRegistro}" />
-                    </p:column>
-
-                    <p:column headerText="ID de Profesor">
-                        <h:outputText value="#{unidadByID.idUsuario}" />
-                    </p:column>
-
-                    <p:column headerText="ID de Aprendizaje">
-                        <h:outputText value="#{unidadByID.idUnidadAprendizaje}" />
+                    <p:column headerText="Unidades de Aprendizaje">
+                        <h:outputText value="#{unidadByID.nombreUnidad}" />
                     </p:column>               
 
                 </p:dataTable>
