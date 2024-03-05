@@ -25,7 +25,7 @@
                 <p:dataTable var="unidades" value="#{consultasBeanUI.listaUnidades}">
 
                     <f:facet name="header">
-                        Unidades de Aprendizaje
+                        Unidades de Aprendizaje de #{loginUI.usuarioProfesor.nombre} #{loginUI.usuarioProfesor.apellido}
                     </f:facet>
 
                     <p:column headerText="ID unidad de aprendizaje">

@@ -82,7 +82,7 @@ public class AltasBeanUI implements Serializable {
         try {
             FacadeUsuarioProfesor facadeProfe = new FacadeUsuarioProfesor();
             if (facadeProfe.guardarUsuarioProfesor(usuarioProfesor)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Profesor registrado exitosamente", "Se ha registrado el profesor"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Profesor registrado exitosamente", "Se ha registrado el profesor"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar el profesor", "Verifique que los datos esten completos"));
             }
@@ -96,7 +96,7 @@ public class AltasBeanUI implements Serializable {
         try {
             FacadeUnidadaprendizaje facadeUnidad = new FacadeUnidadaprendizaje();
             if (facadeUnidad.guardarUnidadAprendizaje(unidadAprendizaje)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unidad registrada exitosamente", "Se ha registrado la UA"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Unidad registrada exitosamente", "Se ha registrado la UA"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar la unidad", "Verifique que los datos esten completos"));
             }
@@ -122,7 +122,7 @@ public class AltasBeanUI implements Serializable {
                 FacadeUsuarioUnidad facadeUsuarioUnidad = new FacadeUsuarioUnidad();
                 usuarioUnidad = usUn;
                 if (facadeUsuarioUnidad.guardarUsuarioUnidad(usUn)) {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unidad registrada exitosamente", "Se ha registrado la UA"));
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Unidad registrada exitosamente", "Se ha registrado la UA"));
                 } else {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo registrar la unidad al profesor", "Verifique que los datos no esten traslapados con otra asignatura"));
                 }
