@@ -7,6 +7,8 @@
           
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="./resources/UABClogo.ico" />
         <title>Perfil</title>
     </h:head>
     <h:body>
@@ -18,7 +20,7 @@
             </f:facet>
             <p:row>
                 <p:column styleClass="celda">Nombre:</p:column>
-                <p:column><h:outputText value="#{loginUI.usuarioProfesor.nombreUsuario}" /></p:column>
+                <p:column><h:outputText value="#{loginUI.usuarioProfesor.nombre}" /></p:column>
             </p:row>
             <p:row>
                 <p:column styleClass="celda">Apellido:</p:column>
@@ -30,11 +32,18 @@
             </p:row>
             <p:row>
                 <p:column styleClass="celda">Rol:</p:column>
-                <p:column><h:outputText value="#{loginUI.usuarioProfesor.rol}" /></p:column>
+                <p:column><h:outputText value="#{loginUI.usuarioProfesor.rol.substring(0, 1).toUpperCase().concat(loginUI.usuarioProfesor.rol.substring(1))}" /></p:column>
             </p:row>
         </p:panelGrid>
+        <div class="btn-container">
+                <p:button outcome="/indexAdmin.xhtml" value="Regresar" class="btn btn-success"/>
+            </div>
     </h:body>
     <style>
+        .btn-container {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
         .logo{
             width: 170px;
         }

@@ -71,12 +71,16 @@ public class consultasBeanUI implements Serializable {
         listaUsuarioUnidad = usuariounidadDao.findAll();
     }
 
-    public void redirPanelUnidadesProfesor(Integer idProfesor) throws IOException {
+    public void getUnidadesDeProfesor(Integer idProfesor) {
         listaUsuarioUnidadByID = usuariounidadDao.findByOneParameter(idProfesor.toString(), "idUsuario");
         listaNombresUnidades.clear();
         for (UsuarioUnidad usuarioUnidades : listaUsuarioUnidadByID) {
             listaNombresUnidades.addAll(unidadaprendizajeDao.findByOneParameter(usuarioUnidades.getIdUnidadAprendizaje().toString(), "idUnidadAprendizaje"));
         }
+    }
+    
+    public void redirPanelUnidadesProfesor(Integer idProfesor) throws IOException {
+        getUnidadesDeProfesor(idProfesor);
         String appURL = "/PanelUnidadesProfesor.xhtml";
         FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
     }

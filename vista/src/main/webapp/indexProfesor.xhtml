@@ -11,23 +11,23 @@
         <link rel="shortcut icon" href="./resources/UABClogo.ico" />
         <title>Unidad de Aprendizaje</title>
     </h:head>
-    <h:body>
+    <h:body onload="#{consultasBeanUI.getUnidadesDeProfesor(loginUI.usuarioProfesor.idUsuario)}">
         <div class="container">
 
             <p:growl id="messages" showDetail="true"/>   
-           
+
 
             <div class="page-header">
                 <div style="display: flex; align-items: center; justify-content: space-between;">
                     <h1>Control Unidades de Aprendizaje</h1>
                     <div style="margin-top: 20px;">
-                        <p:button outcome="/index.xhtml" value="Perfil" class="btn btn-success btn-lg px-5" />
+                        <p:button value="Perfil" class="btn btn-success btn-lg" />
                     </div>
                 </div>
             </div>
             <h:form>
-                
-                <p:dataTable var="unidades" value="#{consultasBeanUI.listaUnidades}">
+
+                <p:dataTable var="unidades" value="#{consultasBeanUI.listaNombresUnidades}">
 
                     <f:facet name="header">
                         Unidades de Aprendizaje de #{loginUI.usuarioProfesor.nombre} #{loginUI.usuarioProfesor.apellido}
@@ -59,7 +59,13 @@
             </h:form>
 
         </div>
-
+        <style>
+            .btn {
+                margin-left: 4px;
+                margin-right: 4px;
+                padding: 4px;
+            }
+        </style>
     </h:body>
     <style>
     </style>
