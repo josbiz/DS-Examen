@@ -29,15 +29,16 @@ import mx.desarrollo.helper.LoginHelper;
 @ManagedBean(name = "consultasBeanUI")
 @SessionScoped
 public class consultasBeanUI implements Serializable {
+
     UsuarioUnidadDAO usuariounidadDao = new UsuarioUnidadDAO();
     UnidadaprendizajeDAO unidadaprendizajeDao = new UnidadaprendizajeDAO();
 
     private Unidadaprendizaje unidadaprendizaje;
     List<Unidadaprendizaje> listaUnidades = new ArrayList();
-    
+
     private UsuarioProfesor usuarioprofesor;
     List<UsuarioProfesor> listaProfes = new ArrayList();
-    
+
     private UsuarioUnidad usuariounidad;
     List<UsuarioUnidad> listaUsuarioUnidad = new ArrayList();
     List<UsuarioUnidad> listaUsuarioUnidadByID = new ArrayList();
@@ -45,7 +46,7 @@ public class consultasBeanUI implements Serializable {
 
     private Integer idProfesor;
 
-    public consultasBeanUI() {     
+    public consultasBeanUI() {
     }
 
     /**
@@ -61,7 +62,7 @@ public class consultasBeanUI implements Serializable {
         consultas();
     }
 
-    public void consultas(){
+    public void consultas() {
         UnidadaprendizajeDAO unidadDao = new UnidadaprendizajeDAO();
         listaUnidades = unidadDao.findAll();
         UsuarioProfesorDAO profeDao = new UsuarioProfesorDAO();
@@ -69,9 +70,9 @@ public class consultasBeanUI implements Serializable {
         ordenarPorNombre(listaProfes);
         listaUsuarioUnidad = usuariounidadDao.findAll();
     }
-    
+
     public void redirPanelUnidadesProfesor(Integer idProfesor) throws IOException {
-        listaUsuarioUnidadByID = usuariounidadDao.findByOneParameter(idProfesor.toString(),"idUsuario");
+        listaUsuarioUnidadByID = usuariounidadDao.findByOneParameter(idProfesor.toString(), "idUsuario");
         listaNombresUnidades.clear();
         for (UsuarioUnidad usuarioUnidades : listaUsuarioUnidadByID) {
             listaNombresUnidades.addAll(unidadaprendizajeDao.findByOneParameter(usuarioUnidades.getIdUnidadAprendizaje().toString(), "idUnidadAprendizaje"));
@@ -79,15 +80,15 @@ public class consultasBeanUI implements Serializable {
         String appURL = "/PanelUnidadesProfesor.xhtml";
         FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
     }
-    
+
     public List<Unidadaprendizaje> getListaUnidades() {
         return listaUnidades;
     }
-    
-    public List<UsuarioProfesor> getListaProfesores(){
+
+    public List<UsuarioProfesor> getListaProfesores() {
         return listaProfes;
     }
-    
+
     public static void ordenarPorNombre(List<UsuarioProfesor> lista) {
         int n = lista.size();
         UsuarioProfesor temp;
@@ -102,14 +103,33 @@ public class consultasBeanUI implements Serializable {
             }
         }
     }
-    
+
+    public String obtenerNombreProfesor(int idProfesor) {
+        for (UsuarioProfesor profesor : listaProfes) {
+            if (profesor.getIdUsuario() == idProfesor) {
+                return profesor.getNombre();
+            }
+        }
+        return "";
+    }
+
+    public String obtenerNombreUnidad(int idUnidad) {
+        for (Unidadaprendizaje unidad : listaUnidades) {
+            if (unidad.getIdUnidadAprendizaje() == idUnidad) {
+                return unidad.getNombreUnidad();
+            }
+        }
+        return "";
+    }
+
     public List<UsuarioUnidad> getListaUsuarioUnidades() {
         return listaUsuarioUnidad;
     }
-    
+
     public List<UsuarioUnidad> getListaUsuarioUnidadesbByID() {
         return listaUsuarioUnidadByID;
     }
+
     /* getters y setters*/
     public Unidadaprendizaje getUnidadaprendizaje() {
         return unidadaprendizaje;
@@ -118,7 +138,7 @@ public class consultasBeanUI implements Serializable {
     public void setUnidadaprendizaje(Unidadaprendizaje unidad) {
         this.unidadaprendizaje = unidad;
     }
-    
+
     public UsuarioProfesor getUsuarioProfesor() {
         return usuarioprofesor;
     }
@@ -126,7 +146,7 @@ public class consultasBeanUI implements Serializable {
     public void setUsuarioProfesor(UsuarioProfesor usuarioP) {
         this.usuarioprofesor = usuarioP;
     }
-    
+
     public String getIdProfesor() {
         return idProfesor.toString();
     }

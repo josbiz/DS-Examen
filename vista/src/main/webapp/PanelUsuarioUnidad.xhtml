@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-          
+
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -26,21 +26,19 @@
                     <p:commandButton value="Asignar unidad de aprendizaje" actionListener="#{altasUI.redirUsuarioUnidad()}" update="messages" class="btn btn-success"/>
                     <p:commandButton value="Quitar unidad de aprendizaje" actionListener="#{bajasUI.redirBajasUsuarioUnidad()}" update="messages" class="btn btn-danger"/>
                 </div>
-                
+
                 <p:dataTable var="unidad" value="#{consultasBeanUI.listaUsuarioUnidades}">     
-                    
                     <p:column headerText="ID del Registro">
                         <h:outputText value="#{unidad.idRegistro}" />
                     </p:column>
 
-                    <p:column headerText="ID de Profesor">
-                        <h:outputText value="#{unidad.idUsuario}" />
+                    <p:column headerText="Nombre de Profesor">
+                        <h:outputText value="#{consultasBeanUI.obtenerNombreProfesor(unidad.idUsuario)}" />
                     </p:column>
 
-                    <p:column headerText="ID de Aprendizaje">
-                        <h:outputText value="#{unidad.idUnidadAprendizaje}" />
-                    </p:column>               
-
+                    <p:column headerText="Nombre de Unidad Aprendizaje">
+                        <h:outputText value="#{consultasBeanUI.obtenerNombreUnidad(unidad.idUnidadAprendizaje)}" />
+                    </p:column>        
                 </p:dataTable>
                 <div>
                     <p:button outcome="/indexAdmin.xhtml" value="Regresar" style="margin-top: 10px;" styleClass="btn btn-default"/>
