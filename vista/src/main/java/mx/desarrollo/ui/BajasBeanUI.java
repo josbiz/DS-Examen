@@ -90,7 +90,7 @@ public class BajasBeanUI implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error: no se pudo eliminar el profesor", "Verifique que los datos sean correctos"));
             }
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Profesor eliminado exitosamente y tambien sus asignaciones", "Se ha eliminado el profesor"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Profesor eliminado exitosamente y tambien sus asignaciones", "Se ha eliminado el profesor"));
         }
     }
 
